@@ -2,7 +2,10 @@ const express = require('express');
 //handle bars templeteing
 const hbs = require('hbs');
 const fs = require('fs');
-
+//gets from machine environment variables to see enter env in the terminal
+//when deploying to heroku it will generate this but that means it will fail on our machine
+//so we set a default
+const port = process.env.PORT || 3000;
 var app = express();
 
 //this tells hbs (handle bars) where partials a located
@@ -79,8 +82,8 @@ app.get('/bad', (req, res) => {
 });
 
 //this is where we listen for requests, it binds to a port on our machine
-app.listen(3000, () => {
-  console.log('Server is running on port 3000');
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
 });
 
 //nodemon server.js
