@@ -28,9 +28,9 @@ app.use((req, res, next) => {
   next(); //moves us forward to the next thing in middle ware with out this the code would stop here
 });
 
-app.use((req, res, next) => {
-  res.render('maintenance.hbs');
-});
+// app.use((req, res, next) => {
+//   res.render('maintenance.hbs');
+// });
 
 app.use(express.static(__dirname + '/public'));
 
@@ -75,6 +75,13 @@ app.get('/about', (req, res) => {
   });
 });
 
+app.get('/projects', (req, res) => {
+  // res.send('A bout Page');
+  res.render('projects.hbs', {
+    pageTitle: 'Project',
+  });
+});
+
 app.get('/bad', (req, res) => {
   res.send({
     errorMessage: 'opps looks like a failure'
@@ -90,3 +97,8 @@ app.listen(port, () => {
 
 //watch these extensions
 //nodemon server.js -e js,hbs
+
+//heroku open
+//https://salty-gorge-83333.herokuapp.com/
+//https://salty-gorge-83333.herokuapp.com/
+//https://salty-gorge-83333.herokuapp.com/about
